@@ -6,15 +6,21 @@ from constants import WORK_DAYS
 class Employee:
     status = "WORKING"
 
-    def __init__(self, data):
-        self.name = data.get("name")
-        self.last_name = data.get("last_name")
-        self.age = data.get("age")
+    # def __init__(self, data):
+    #     self.name = data.get("name")
+    #     self.last_name = data.get("last_name")
+    #     self.age = data.get("age")
 
-    # def __init__(self, name, last_name, age):
-    #     self.name = name
-    #     self.last_name = last_name
-    #     self.age = age
+    def __init__(self, name, last_name, age):
+        self.name = name
+        self.last_name = last_name
+        self.age = age
+
+    # def __str__(self):
+    #     return f"{self.name} - {self.last_name}"
+
+    def __repr__(self):
+        return f"Employee({self.name}, {self.last_name}, {self.age})"
 
     # def __init__(self, name, last_name, age, registration_date=None):
     #     self.name = name
@@ -75,10 +81,10 @@ def main():
 
     # UNPACKING
     # Case Scenario 1 - passing params as dict to class.__init__()
-    emp = Employee(data_dict)
+    # emp = Employee(data_dict)
 
     # Case Scenario 2 - passing params unpacking dict with ** to class.__init__()
-    # emp = Employee(**data_dict)
+    emp = Employee(**data_dict)
     #
     # # Case Scenario 3 - passing params unpacking tuple with * to class.__init__()
     # emp = Employee(*data_tuple)
@@ -87,7 +93,7 @@ def main():
     # emp = Employee(*data_list)
 
     # ARGS / KWARGS
-    # emp = Employee("pepe", "suarez", 44, data_tuple, extra_data)
+    # emp = Employee("pepe", "suarez", 44, data_tuple)
 
     # ALTERNATIVES CONSTRUCTORS
     # instance of a class using a classmethod
@@ -103,13 +109,13 @@ def main():
     # print(emp.status)
 
     # instance methods have access to the class and object state
-    # emp = Employee("maria", "pereida", 26)
+    emp = Employee("maria", "pereida", 26)
 
-    # print(emp.age)  # access to attr
-    # print(emp.get_full_name())  # access to instance method
-    # print(emp.is_workday())  # access to static method
-    # print(emp.change_status("PTO"))  # access to class method
-    # print(emp.status)
+    print(emp.age)  # access to attr
+    print(emp.get_full_name())  # access to instance method
+    print(emp.is_workday())  # access to static method
+    print(emp.change_status("PTO"))  # access to class method
+    print(emp.status)
 
     print(emp)
 
