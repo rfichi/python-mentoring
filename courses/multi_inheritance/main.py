@@ -29,9 +29,46 @@ class Student(Person, Athlete):
         Athlete.__init__(self, sport, teacher)
         self.student_id = student_id
 
+    def get_full_description(self):
+        return
+
+
     # def get_full_description(self):
     #     return Athlete.get_full_description(self)
 
+
+class Tokenizer:
+    """Tokenize text"""
+    def __init__(self, text):
+        print('Start Tokenizer.__init__()')
+        self.tokens = text.split()
+        print('End Tokenizer.__init__()')
+
+
+class WordCounter(Tokenizer):
+    """Count words in text"""
+    def __init__(self, text):
+        print('Start WordCounter.__init__()')
+        super().__init__(text)
+        self.word_count = len(self.tokens)
+        print('End WordCounter.__init__()')
+
+
+class Vocabulary(Tokenizer):
+    """Find unique words in text"""
+    def __init__(self, text):
+        print('Start init Vocabulary.__init__()')
+        super().__init__(text)
+        self.vocab = set(self.tokens)
+        print('End init Vocabulary.__init__()')
+
+
+class TextDescriber(WordCounter, Vocabulary):
+    """Describe text with multiple metrics"""
+    def __init__(self, text):
+        print('Start init TextDescriber.__init__()')
+        super().__init__(text)
+        print('End init TextDescriber.__init__()')
 
 def main():
 
@@ -40,6 +77,7 @@ def main():
     stu = Student("Edison", "Thomas", 22, "baseball", "Morgan", 23567)
 
     print(stu.get_full_description())
+    # print(help(stu))
 
     # print(help(dev))
 
