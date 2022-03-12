@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-nginx
+spec:
+  replicas: 3
+  revisionHistoryLimit: 15
+  selector:
+    matchExpressions:
+      - {key: tier, operator: In, values: [frontend, backend]}
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: nginx

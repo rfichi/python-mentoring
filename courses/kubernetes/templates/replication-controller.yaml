@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rc-nginx
+spec:
+  replicas: 3
+  selector:
+    tier: backend
+  template:
+    metadata:
+      name: rc-nginx
+      labels:
+        tier: backend
+    spec:
+      containers:
+      - name: backend
+        image: nginx
+
