@@ -1,106 +1,122 @@
+class MyCircleException(Exception):
+    pass
 
-# class Circle:
-#     def __init__(self, radius):
-#         self.__radius = radius
-#
-#     def __repr__(self):
-#         return f"{self.__class__.__name__}({self.radius})"
-#
-#     @property
-#     def radius(self):
-#         """The radius property."""
-#         print("Get radius")
-#         return self.__radius
-#
-#     @radius.setter
-#     def radius(self, value):
-#         print("Set radius")
-#         self.__radius = value
-#
-#     @radius.deleter
-#     def radius(self):
-#         print("Delete radius")
-#         del self.__radius
-#
-#     def __radius_pow_by_value(self, value):
-#         return self.__radius ** value
-#
-#     def radius_pow_by_value(self, value):
-#         if isinstance(value, int):
-#             return self.__radius_pow_by_value(value)
-#         raise ValueError(f"{value} is not type int")
+
+class Circle:
+    def __init__(self, radius):
+        self.__radius = radius
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.__radius})"
+
+    @property
+    def radius(self):
+        """The radius property."""
+        print("Get radius")
+        return self.__radius
+
+    @radius.setter
+    def radius(self, value):
+        print("Set radius")
+        self.__radius = value
+
+    @radius.deleter
+    def radius(self):
+        print("Delete radius")
+        del self.__radius
+
+    def __radius_pow_by_value(self, value):
+        return self.radius ** value
+
+    def radius_pow_by_value(self, value):
+        if isinstance(value, int):
+            return self.__radius_pow_by_value(value)
+        raise ValueError(f"{value} is not type int")
 
 
 class Employee:
 
-    def __init__(self, name, last_name):
-        self.name = name
-        self.last_name = last_name
-        self.email = f"{name}.{last_name}@mail.com"
-
-    @property
-    def full_name(self):
-        return f"{self.name} {self.last_name}"
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}({self.name}, {self.last_name})"
-
     # def __init__(self, name, last_name):
-    #     self.__name = name
-    #     self.__last_name = last_name
-    #     self.__email = f"{name}.{last_name}@mail.com"
-
-    # def __repr__(self):
-    #     return f"{self.__class__.__name__}({self.__name}, {self.__last_name})"
-
-    # @property
-    # def name(self):
-    #     return self.__name
-    #
-    # @name.setter
-    # def name(self, value):
-    #     self.__name = value
-    #
-    # @property
-    # def last_name(self):
-    #     return self.__last_name
-    #
-    # @last_name.setter
-    # def last_name(self, value):
-    #     self.__last_name = value
+    #     self.name = name
+    #     self.last_name = last_name
+    #     self.email = f"{name}.{last_name}@mail.com"
     #
     # @property
     # def full_name(self):
-    #     return f"{self.__name} {self.__last_name}"
-    #
-    # @full_name.setter
-    # def full_name(self, new_full_name):
-    #     self.__name, self.__last_name = new_full_name.split()
-    #
-    # @property
-    # def email(self):
-    #     return f"{self.name}.{self.last_name}@mail.com"
-    #
-    # @email.setter
-    # def email(self, new_email):
-    #     self.__name, self.__last_name = new_email.split("@")[0].split(".")
-    #     self.__email = new_email
+    #     return f"{self.name} {self.last_name}"
+
+    # def __repr__(self):
+    #     return f"{self.__class__.__name__}({self.name}, {self.last_name})"
+
+    def __init__(self, name, last_name):
+        self.__name = name
+        self.__last_name = last_name
+        self.__email = f"{name}.{last_name}@mail.com"
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.__name}, {self.__last_name})"
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
+
+    @property
+    def last_name(self):
+        return self.__last_name
+
+    @last_name.setter
+    def last_name(self, value):
+        self.__last_name = value
+
+    @property
+    def full_name(self):
+        return f"{self.__name} {self.__last_name}"
+
+    @full_name.setter
+    def full_name(self, new_full_name):
+        self.__name, self.__last_name = new_full_name.split()
+
+    @property
+    def email(self):
+        return f"{self.name}.{self.last_name}@mail.com"
+
+    @email.setter
+    def email(self, new_email):
+        self.__name, self.__last_name = new_email.split("@")[0].split(".")
 
 
 def main():
-    pass
 
-    # Differences between protected and private methods
+    # read and write
+
+    # read only
+
+    # circle = Circle(25)
+    # circle.radius = 50
+    # del(circle.radius)
+    # write only
+
+    # Differences between public and private methods
     # circle = Circle(25)
     # print(circle.radius_pow_by_value(2))
+    # circle.__radius = 10
+    # print(circle.__radius)
     # print(circle.__radius_pow_by_value(2))
 
     # print(circle)
 
     # Trying to overwrite attrs
-    # emp = Employee("juan", "cruz")
-    # print(emp.full_name)
-    # print(emp.email)
+    emp = Employee("juan", "cruz")
+    print(emp.full_name)
+    # emp.full_name = "Pepito perez"
+    print(emp.email)
+    emp.email = "pepito.perez@gmail.com"
+    print(emp.email)
+    print(emp.full_name)
     #
     # emp.name = "Benedito"
     # print(emp.full_name)
