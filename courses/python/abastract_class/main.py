@@ -175,12 +175,12 @@ def main():
     #     animal.do(action="feeding", time="10:10 PM")
 
     # encapsulation with abstract classes
-    # leo = Lion()
-    # leo.food_eaten = "papa"
-    # leo.feed("10:10 AM")
-    # adam = Snake()
-    # adam.food_eaten = "frog"
-    # adam.feed("10:20 AM")
+    leo = Lion()
+    leo.food_eaten = "papa"
+    leo.feed("10:10 AM")
+    adam = Snake()
+    adam.food_eaten = "frog"
+    adam.feed("10:20 AM")
 
 
 if __name__ == "__main__":
